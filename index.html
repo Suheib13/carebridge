@@ -8,6 +8,20 @@
   </head>
   <body>
     <div id="root"></div>
+    <script>
+      // SPA redirect handler for GitHub Pages
+      (function() {
+        var redirect = sessionStorage.getItem('redirect');
+        if (redirect) {
+          sessionStorage.removeItem('redirect');
+          var base = '/carebridge';
+          var path = redirect.startsWith(base) ? redirect.slice(base.length) : redirect;
+          if (path && path !== '/') {
+            window.history.replaceState(null, '', base + path);
+          }
+        }
+      })();
+    </script>
     <script type="module" src="/src/main.tsx"></script>
   </body>
 </html>
