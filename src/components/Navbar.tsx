@@ -1,9 +1,10 @@
 import { Link, useLocation } from 'react-router-dom';
-import { Bell, MapPin, Bot, LogOut } from 'lucide-react';
+import { LayoutDashboard, Bell, MapPin, Bot, LogOut } from 'lucide-react';
 import Logo from './Logo';
 import { useAuth } from '../contexts/AuthContext';
 
 const NAV_ITEMS = [
+  { to: '/dashboard', label: 'Health Hub', icon: LayoutDashboard },
   { to: '/medications', label: 'Reminders', icon: Bell },
   { to: '/hospital-finder', label: 'Hospitals', icon: MapPin },
   { to: '/ai-check', label: 'AI Triage', icon: Bot },
