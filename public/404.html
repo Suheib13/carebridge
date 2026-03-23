@@ -4,8 +4,8 @@
     <meta charset="utf-8">
     <script>
       // SPA redirect for GitHub Pages
-      // Stores the path in sessionStorage and redirects to base
-      sessionStorage.setItem('redirect', window.location.pathname + window.location.search);
+      // Stores path + hash in sessionStorage so the app can restore the full URL
+      sessionStorage.setItem('redirect', window.location.pathname + window.location.search + window.location.hash);
       window.location.replace('/carebridge/');
     </script>
   </head>

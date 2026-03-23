@@ -10,6 +10,7 @@
     <div id="root"></div>
     <script>
       // SPA redirect handler for GitHub Pages
+      // Restores the full path + hash (needed for Supabase auth tokens)
       (function() {
         var redirect = sessionStorage.getItem('redirect');
         if (redirect) {
@@ -17,7 +18,11 @@
           var base = '/carebridge';
           var path = redirect.startsWith(base) ? redirect.slice(base.length) : redirect;
           if (path && path !== '/') {
-            window.history.replaceState(null, '', base + path);
+            // Split path and hash so replaceState gets the path, and hash is set separately
+            var hashIdx = path.indexOf('#');
+            var pathname = hashIdx >= 0 ? path.slice(0, hashIdx) : path;
+            var hash = hashIdx >= 0 ? path.slice(hashIdx) : '';
+            window.history.replaceState(null, '', base + pathname + hash);
           }
         }
       })();
