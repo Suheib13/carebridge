@@ -1,0 +1,8 @@
+{
+  "name": "CareBridge",
+  "description": "A modern health-tech web application for emergency medical data storage and offline QR code access.",
+  "requestFramePermissions": [
+    "geolocation",
+    "microphone"
+  ]
+}
