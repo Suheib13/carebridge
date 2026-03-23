@@ -482,7 +482,7 @@ export default function Dashboard() {
       {/* QR Code Modal */}
       <AnimatePresence>
         {showQRModal && profile && (() => {
-          const profileUrl = `${window.location.origin}/emergency/${profile.id}`;
+          const profileUrl = `${window.location.origin}${import.meta.env.BASE_URL}emergency/${profile.id}`;
           const vcardData = [
             'BEGIN:VCARD',
             'VERSION:3.0',

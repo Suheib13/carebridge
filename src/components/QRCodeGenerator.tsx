@@ -13,7 +13,7 @@ export default function QRCodeGenerator({ profile, scanCount = 0, lastScanned }:
   const onlineRef = useRef<SVGSVGElement>(null);
   const offlineRef = useRef<SVGSVGElement>(null);
 
-  const profileUrl = `${window.location.origin}/emergency/${profile.id}`;
+  const profileUrl = `${window.location.origin}${import.meta.env.BASE_URL}emergency/${profile.id}`;
 
   const vcardData = [
     'BEGIN:VCARD',
