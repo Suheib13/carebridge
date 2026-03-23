@@ -1,0 +1,14 @@
+services:
+  - type: web
+    name: carebridge-api
+    runtime: node
+    plan: free
+    buildCommand: npm ci && npx tsc server.ts --esModuleInterop --module nodenext --moduleResolution nodenext --outDir dist-server --skipLibCheck
+    startCommand: node dist-server/server.js
+    envVars:
+      - key: GROQ_API_KEY
+        sync: false
+      - key: CORS_ORIGIN
+        value: https://suheib13.github.io
+      - key: API_PORT
+        value: 10000
