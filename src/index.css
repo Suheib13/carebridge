@@ -51,6 +51,11 @@ html.light .no-invert {
   filter: invert(1) hue-rotate(180deg);
 }
 
+/* Prevent light-mode filter from breaking Leaflet map tiles and controls */
+html.light .leaflet-container {
+  filter: invert(1) hue-rotate(180deg);
+}
+
 /* Override browser autofill styles to match dark theme */
 input:-webkit-autofill,
 input:-webkit-autofill:hover,

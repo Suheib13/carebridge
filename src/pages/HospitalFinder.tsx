@@ -212,7 +212,7 @@ export default function HospitalFinder() {
         </div>
       </div>
 
-      <main className="flex-1 flex flex-col md:flex-row max-w-7xl w-full mx-auto overflow-hidden relative">
+      <main className="flex-1 flex flex-col md:flex-row max-w-7xl w-full mx-auto overflow-hidden relative h-[calc(100vh-120px)]">
         <div className="absolute top-1/2 left-1/4 -translate-y-1/2 w-full max-w-[600px] h-[400px] sm:h-[600px] bg-white/5 rounded-full blur-[120px] pointer-events-none" />
 
         {/* Sidebar */}
@@ -285,7 +285,7 @@ export default function HospitalFinder() {
         </div>
 
         {/* Map */}
-        <div className="flex-1 relative h-[calc(65vh-56px)] md:h-[calc(100vh-120px)] z-0">
+        <div className="relative h-[50vh] md:flex-1 md:h-auto md:min-h-full z-0">
           {location ? (
             <MapContainer
               center={location}
@@ -297,7 +297,7 @@ export default function HospitalFinder() {
               <ChangeView center={location} zoom={13} />
               <TileLayer
                 attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
-                url="https://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}{r}.png"
+                url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
               />
               <Marker position={location} icon={userIcon}>
                 <Popup>
