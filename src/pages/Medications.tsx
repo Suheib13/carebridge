@@ -91,6 +91,9 @@ export default function Medications() {
     }
     const perm = await Notification.requestPermission();
     setPermission(perm);
+    if (perm === 'denied') {
+      alert('Notifications are blocked. Please enable them in your browser settings:\n\nChrome: Click the lock/tune icon in the address bar → Site settings → Notifications → Allow\n\nSafari: Settings → Websites → Notifications → Allow');
+    }
   };
 
   const handleAddMedication = async (e: React.FormEvent) => {
@@ -156,24 +159,28 @@ export default function Medications() {
         <div className="relative z-10">
           {/* Notification permission banner */}
           {permission !== 'granted' && (
-            <div className="mb-6 bg-amber-500/10 border border-amber-500/20 rounded-2xl p-4 sm:p-5 flex flex-col sm:flex-row gap-4 items-start sm:items-center justify-between backdrop-blur-sm">
+            <div className="mb-6 bg-amber-500/10 border border-amber-500/20 rounded-2xl p-4 sm:p-5 flex flex-col sm:flex-row gap-4 items-start sm:items-center justify-between backdrop-blur-sm relative z-20">
               <div className="flex items-start gap-3">
                 <AlertCircle className="w-5 h-5 sm:w-6 sm:h-6 text-amber-400 shrink-0 mt-0.5" />
                 <div>
                   <h3 className="text-xs sm:text-sm font-bold text-amber-400 uppercase tracking-widest mb-1">
-                    Let Us Remind You
+                    {permission === 'denied' ? 'Notifications Blocked' : 'Let Us Remind You'}
                   </h3>
                   <p className="text-xs sm:text-sm text-amber-200/80 font-light leading-relaxed">
-                    Allow notifications so we can nudge you when it's time for your medicine.
+                    {permission === 'denied'
+                      ? 'Notifications are blocked. Click the lock/tune icon in your address bar → Site settings → Notifications → Allow, then reload.'
+                      : 'Allow notifications so we can nudge you when it\'s time for your medicine.'}
                   </p>
                 </div>
               </div>
-              <button
-                onClick={requestNotificationPermission}
-                className="shrink-0 px-5 py-2.5 bg-amber-500 hover:bg-amber-400 text-black text-sm font-bold uppercase tracking-widest rounded-xl transition-all active:scale-95 w-full sm:w-auto"
-              >
-                Yes, Please
-              </button>
+              {permission !== 'denied' && (
+                <button
+                  onClick={requestNotificationPermission}
+                  className="shrink-0 px-5 py-2.5 bg-amber-500 hover:bg-amber-400 text-black text-sm font-bold uppercase tracking-widest rounded-xl transition-all active:scale-95 w-full sm:w-auto"
+                >
+                  Yes, Please
+                </button>
+              )}
             </div>
           )}
 
