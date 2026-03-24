@@ -172,7 +172,7 @@ export default function Dashboard() {
       <Navbar />
 
       <main className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 pt-8 sm:pt-10 relative">
-        <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[800px] h-[600px] bg-white/5 rounded-full blur-[120px] pointer-events-none" />
+        <div className="absolute top-0 left-1/2 -translate-x-1/2 w-full max-w-[800px] h-[400px] sm:h-[600px] bg-white/5 rounded-full blur-[120px] pointer-events-none" />
 
         <div className="print:hidden relative z-10">
           <motion.div
@@ -287,7 +287,7 @@ export default function Dashboard() {
             onSubmit={handleReview}
             className="bg-white/5 backdrop-blur-xl rounded-[2rem] sm:rounded-[2.5rem] shadow-2xl border border-white/10 overflow-hidden print:hidden relative z-10"
           >
-            <div className="p-6 sm:p-12 space-y-10 relative z-10">
+            <div className="p-4 sm:p-6 md:p-12 space-y-8 sm:space-y-10 relative z-10">
               {/* Who You Are */}
               <div>
                 <h3 className="text-lg sm:text-xl font-serif text-white flex items-center gap-3 mb-5">

@@ -26,7 +26,10 @@ export default function Navbar() {
             </Link>
           </div>
 
-          {/* Center — Nav tabs (desktop) */}
+          {/* Center — App name (mobile) / Nav tabs (desktop) */}
+          <Link to="/" className="md:hidden text-xl font-salsa text-white tracking-wide">
+            CareBridge
+          </Link>
           <nav className="hidden md:flex items-center gap-1.5">
             {NAV_ITEMS.map(({ to, label, icon: Icon }) => {
               const active = pathname === to;

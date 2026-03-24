@@ -14,7 +14,7 @@ self.addEventListener('message', (event) => {
   }
 });
 
-// Check every 30 seconds for due medications
+// Check every 10 seconds for due medications
 setInterval(() => {
   const now = new Date();
   const current =
@@ -30,6 +30,7 @@ setInterval(() => {
   lastFired = current;
 
   due.forEach((med) => {
+    if (Notification.permission !== 'granted') return;
     self.registration.showNotification('💊 Medication Reminder — CareBridge', {
       body: `Time to take ${med.name}${med.dosage ? ` · ${med.dosage}` : ''}.`,
       icon: '/vite.svg',
@@ -39,7 +40,7 @@ setInterval(() => {
       data: { url: '/medications' },
     });
   });
-}, 30000);
+}, 10000);
 
 // Tap on notification → open or focus the app
 self.addEventListener('notificationclick', (event) => {

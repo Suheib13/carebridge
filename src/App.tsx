@@ -56,7 +56,14 @@ function AppContent() {
             </ProtectedRoute>
           }
         />
-        <Route path="/hospital-finder" element={<HospitalFinder />} />
+        <Route
+          path="/hospital-finder"
+          element={
+            <ProtectedRoute>
+              <HospitalFinder />
+            </ProtectedRoute>
+          }
+        />
         <Route path="/emergency/:id" element={<EmergencyProfile />} />
         <Route
           path="/medications"

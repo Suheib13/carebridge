@@ -124,9 +124,9 @@ export default function Landing() {
           
           {/* Quick Access Buttons in Header */}
           <div className="hidden lg:flex items-center gap-10">
-            <Link to="/ai-check" className="text-xs font-medium text-white/70 hover:text-white uppercase tracking-[0.2em] transition-colors">AI Triage</Link>
-            <Link to="/hospital-finder" className="text-xs font-medium text-white/70 hover:text-white uppercase tracking-[0.2em] transition-colors">Find Hospital</Link>
-            <Link to="/medications" className="text-xs font-medium text-white/70 hover:text-white uppercase tracking-[0.2em] transition-colors">Reminders</Link>
+            <Link to="/login" className="text-xs font-medium text-white/70 hover:text-white uppercase tracking-[0.2em] transition-colors">AI Triage</Link>
+            <Link to="/login" className="text-xs font-medium text-white/70 hover:text-white uppercase tracking-[0.2em] transition-colors">Find Hospital</Link>
+            <Link to="/login" className="text-xs font-medium text-white/70 hover:text-white uppercase tracking-[0.2em] transition-colors">Reminders</Link>
           </div>
 
           <div className="flex items-center gap-4 sm:gap-8">
@@ -134,7 +134,7 @@ export default function Landing() {
             <Link to="/login" className="text-xs font-medium text-white/70 hover:text-white uppercase tracking-[0.2em] transition-colors hidden sm:block">
               Sign In
             </Link>
-            <Link to="/signup" className="px-4 py-2.5 sm:px-8 sm:py-3.5 bg-white text-black text-[10px] sm:text-xs font-bold uppercase tracking-[0.2em] hover:bg-white/90 transition-all rounded-xl whitespace-nowrap">
+            <Link to="/signup" className="hidden sm:inline-flex px-8 py-3.5 bg-white text-black text-xs font-bold uppercase tracking-[0.2em] hover:bg-white/90 transition-all rounded-xl whitespace-nowrap">
               Get Started
             </Link>
           </div>

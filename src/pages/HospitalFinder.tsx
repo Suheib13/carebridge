@@ -213,10 +213,10 @@ export default function HospitalFinder() {
       </div>
 
       <main className="flex-1 flex flex-col md:flex-row max-w-7xl w-full mx-auto overflow-hidden relative">
-        <div className="absolute top-1/2 left-1/4 -translate-y-1/2 w-[600px] h-[600px] bg-white/5 rounded-full blur-[120px] pointer-events-none" />
+        <div className="absolute top-1/2 left-1/4 -translate-y-1/2 w-full max-w-[600px] h-[400px] sm:h-[600px] bg-white/5 rounded-full blur-[120px] pointer-events-none" />
 
         {/* Sidebar */}
-        <div className="w-full md:w-80 bg-[#0a0a0a] border-r border-white/10 flex flex-col shrink-0 h-[40vh] md:h-[calc(100vh-120px)] overflow-y-auto relative z-10">
+        <div className="w-full md:w-80 bg-[#0a0a0a] border-r border-white/10 flex flex-col shrink-0 h-[35vh] md:h-[calc(100vh-120px)] overflow-y-auto relative z-10">
           <div className="p-4 border-b border-white/10 sticky top-0 bg-[#0a0a0a] z-10">
             <h2 className="text-lg font-serif text-white">Places to Get Help</h2>
             <p className="text-xs text-white/50 mt-0.5 uppercase tracking-wide">Close to you</p>
@@ -285,7 +285,7 @@ export default function HospitalFinder() {
         </div>
 
         {/* Map */}
-        <div className="flex-1 relative h-[calc(60vh-56px)] md:h-[calc(100vh-120px)] z-0">
+        <div className="flex-1 relative h-[calc(65vh-56px)] md:h-[calc(100vh-120px)] z-0">
           {location ? (
             <MapContainer
               center={location}

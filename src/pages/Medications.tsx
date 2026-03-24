@@ -43,11 +43,15 @@ export default function Medications() {
 
   // Sync medication schedule to the Service Worker whenever it changes
   useEffect(() => {
-    if (!navigator.serviceWorker?.controller) return;
-    navigator.serviceWorker.controller.postMessage({
-      type: 'SYNC_SCHEDULE',
-      medications,
-    });
+    const syncSchedule = async () => {
+      if (!('serviceWorker' in navigator)) return;
+      const reg = await navigator.serviceWorker.ready;
+      reg.active?.postMessage({
+        type: 'SYNC_SCHEDULE',
+        medications,
+      });
+    };
+    syncSchedule();
   }, [medications]);
 
   // Page-thread fallback: fires notifications when the tab is in the foreground
@@ -75,7 +79,7 @@ export default function Medications() {
           });
         });
       }
-    }, 30000);
+    }, 10000);
 
     return () => clearInterval(interval);
   }, [medications, lastNotified]);
@@ -147,7 +151,7 @@ export default function Medications() {
       <Navbar />
 
       <main className="flex-1 max-w-3xl w-full mx-auto px-4 sm:px-6 lg:px-8 py-8 pb-28 md:pb-10 relative">
-        <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[600px] h-[600px] bg-indigo-900/10 rounded-full blur-[120px] pointer-events-none" />
+        <div className="absolute top-0 left-1/2 -translate-x-1/2 w-full max-w-[600px] h-[400px] sm:h-[600px] bg-indigo-900/10 rounded-full blur-[120px] pointer-events-none" />
 
         <div className="relative z-10">
           {/* Notification permission banner */}
@@ -186,7 +190,7 @@ export default function Medications() {
               </p>
             </div>
             <form onSubmit={handleAddMedication} className="p-5 sm:p-8">
-              <div className="grid grid-cols-1 gap-5 sm:grid-cols-3">
+              <div className="grid grid-cols-1 gap-5 md:grid-cols-3">
                 <div>
                   <label htmlFor="name" className="block text-sm font-medium text-white/80 mb-2">
                     Name of Medicine
